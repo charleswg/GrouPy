@@ -78,6 +78,10 @@ def gconv2d_util(h_input, h_output, in_channels, out_channels, ksize):
         gconv_indices = flatten_indices(make_d4_p4m_indices(ksize=ksize))
         nti = 8
         nto = 8
+    elif h_input == 'D4' and h_output == 'Z2':
+        gconv_indices = flatten_indices(make_d4_z2_indices(ksize=ksize))
+        nti = 8
+        nto = 1
     else:
         raise ValueError('Unknown (h_input, h_output) pair:' + str((h_input, h_output)))
 
